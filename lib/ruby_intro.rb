@@ -4,11 +4,11 @@
 
 def sum arr
   # YOUR CODE HERE
-  sumNum = 0
+  sumOfNum = 0
   if arr.length() != 0
-    arr.each {|a| sumNum += a}
+    arr.each {|a| sumOfNum += a}
   end
-  return sumNum
+  return sumOfNum
 end
 
 def max_2_sum arr
@@ -81,4 +81,33 @@ end
 
 class BookInStock
 # YOUR CODE HERE
+  def initialize(isbn,price) #Constructor
+    if isbn.length == 0 or price<=0
+      raise ArgumentError.new('ISBN length invalid or price is less than or equal 0')
+    end
+    @isbn = isbn
+    @price = price
+  end
+  def isbn #Getter
+    @isbn
+  end
+  def price #Getter
+    @price
+  end
+  def isbn=(isbn) #Setter
+    if isbn.length == 0
+      raise ArgumentError.new('ISBN length invalid')
+    end
+    @isbn = isbn
+  end
+  def price=(price) #Setter
+    if price <= 0
+      raise ArgumentError.new('Price is less than or equal to zero')
+    end
+    @price = price
+  end
+  
+  def price_as_string
+    return "$" + format("%.2f",@price)
+  end
 end
