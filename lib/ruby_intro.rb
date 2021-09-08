@@ -42,20 +42,39 @@ end
 
 def sum_to_n? arr, n
   # YOUR CODE HERE
+  arr.combination(2).any? {|num1,num2| if num1 + num2 == n then return true end}
+  return false
 end
 
 # Part 2
 
 def hello(name)
   # YOUR CODE HERE
+  return "Hello, #{name}"
 end
 
 def starts_with_consonant? s
   # YOUR CODE HERE
+  return /^[^aeiouAEIOU\W]/i.match(s) != nil
 end
 
 def binary_multiple_of_4? s
   # YOUR CODE HERE
+  arr = s.split('')
+  num = 0
+  if arr.length == 0
+    return false
+  end
+  arr.reverse.each_with_index {|c,index| 
+  if c != "1" and c != "0"
+  then return false
+  elsif c == '\0'
+  then next
+  else
+  num = num + c.to_i*(2**index)  
+  end
+  }
+  return num % 4 == 0
 end
 
 # Part 3
